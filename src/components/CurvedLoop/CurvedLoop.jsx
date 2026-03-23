@@ -64,6 +64,19 @@ const CurvedLoop = ({
   }, [text, className]);
 
   useEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      measureSpacing();
+    });
+    const t = window.setTimeout(() => {
+      setSpacing((s) => (s > 0 ? s : Math.max(120, text.length * 14)));
+    }, 200);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(t);
+    };
+  }, [text, className]);
+
+  useEffect(() => {
     if (typeof document === 'undefined' || !document.fonts) return;
     let cancelled = false;
     document.fonts.ready.then(() => {
@@ -148,8 +161,13 @@ const CurvedLoop = ({
 
   return (
     <div
-      className="curved-loop-jacket"
-      style={{ visibility: ready ? 'visible' : 'hidden', cursor: cursorStyle }}
+      className={`curved-loop-jacket${ready ? ' curved-loop-jacket--ready' : ''}`}
+      style={{
+        opacity: ready ? 1 : 0,
+        pointerEvents: ready ? 'auto' : 'none',
+        cursor: cursorStyle,
+      }}
+      aria-hidden={!ready}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}

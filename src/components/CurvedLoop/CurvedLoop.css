@@ -4,6 +4,7 @@
   overflow: hidden;
   background: transparent;
   margin: 2rem 0;
+  transition: opacity 0.2s ease;
 }
 
 .curved-loop-svg {
@@ -11,7 +12,7 @@
   height: auto;
   display: block;
   background: transparent;
-  /* גובה מינימלי גדול יותר במובייל כדי שהעקומה והטקסט לא ייראו זעירים */
+  aspect-ratio: 1680 / 280;
   min-height: clamp(180px, 48vw, 300px);
 }
 
@@ -40,7 +41,6 @@
   font-weight: bold;
   letter-spacing: 0.08em;
   font-family: 'Heebo', sans-serif;
-  unicode-bidi: embed;
 }
 
 @media (max-width: 768px) {
