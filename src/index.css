@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-1: #a855f7;
+    --color-2: #ec4899;
+    --color-3: #06b6d4;
+    --color-4: #f472b6;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-surface-deep font-heebo text-white antialiased;
+    margin: 0;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+/* ScrollStack + window Lenis: let document scroll drive transforms */
+.scroll-stack-window.scroll-stack-scroller {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+.scroll-stack-window .scroll-stack-inner {
+  min-height: 200vh;
+  padding-bottom: 4rem;
+}

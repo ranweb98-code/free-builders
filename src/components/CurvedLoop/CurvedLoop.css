@@ -1,0 +1,49 @@
+.curved-loop-jacket {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+  margin: 2rem 0;
+}
+
+.curved-loop-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: transparent;
+}
+
+/* Hidden HTML text nudges Heebo to load before SVG metrics */
+.curved-loop-font-preload {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  font-family: 'Heebo', sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+
+.curved-loop-svg text {
+  fill: white !important;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  font-family: 'Heebo', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .curved-loop-svg text {
+    font-size: 1.2rem;
+  }
+  .curved-loop-font-preload {
+    font-size: 1.2rem;
+  }
+}

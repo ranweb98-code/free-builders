@@ -1,0 +1,171 @@
+.outer-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.step-circle-container {
+  border-radius: 2rem;
+  background: rgba(20, 20, 40, 0.6);
+  backdrop-filter: blur(12px);
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.step-indicator-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.step-indicator {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-indicator-inner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background: #222;
+  color: #a3a3a3;
+  transition: all 0.3s ease;
+}
+
+.step-indicator.active .step-indicator-inner {
+  background: rgba(82, 39, 255, 0.35);
+  color: white;
+  box-shadow: 0 0 0 2px rgba(82, 39, 255, 0.6);
+}
+
+.step-indicator.completed .step-indicator-inner {
+  background: #5227ff;
+  color: white;
+}
+
+.step-indicator .active-dot {
+  width: 12px;
+  height: 12px;
+  background: #5227ff;
+  border-radius: 50%;
+}
+
+.step-indicator .check-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background: #333;
+  margin: 0 8px;
+  position: relative;
+  min-width: 12px;
+}
+
+.step-connector-inner {
+  height: 100%;
+  background: #5227ff;
+  width: 0;
+  transition: width 0.35s ease;
+}
+
+.step-connector.filled .step-connector-inner {
+  width: 100%;
+}
+
+.step-default {
+  padding: 1rem 0;
+  text-align: right;
+  direction: rtl;
+}
+
+.step-default input,
+.step-default textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 1rem;
+  font-family: 'Heebo', sans-serif;
+}
+
+.step-default label {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.footer-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.footer-nav.spread {
+  justify-content: space-between;
+}
+
+.footer-nav.end {
+  justify-content: flex-end;
+}
+
+.back-button,
+.next-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.next-button {
+  background: linear-gradient(135deg, #5227ff, #7cff67);
+  color: white;
+}
+
+.next-button:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+.next-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.step-content-wrap {
+  min-height: 12rem;
+}

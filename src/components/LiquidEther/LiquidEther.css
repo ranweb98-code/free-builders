@@ -1,0 +1,11 @@
+/* Full-viewport background layer — must not use position: relative (conflicts with fixed + collapses height) */
+.liquid-ether-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+}

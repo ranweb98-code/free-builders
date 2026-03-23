@@ -1,0 +1,5 @@
+.variable-proximity {
+  display: inline-block;
+  font-family: 'Heebo', sans-serif;
+  transition: font-variation-settings 0.05s linear;
+}
