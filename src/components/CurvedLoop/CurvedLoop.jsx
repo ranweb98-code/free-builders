@@ -149,7 +149,6 @@ const CurvedLoop = ({
   return (
     <div
       className="curved-loop-jacket"
-      dir="ltr"
       style={{ visibility: ready ? 'visible' : 'hidden', cursor: cursorStyle }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
@@ -167,12 +166,12 @@ const CurvedLoop = ({
         preserveAspectRatio="xMidYMid meet"
         style={{
           aspectRatio: `${viewBoxRect.w} / ${viewBoxRect.h}`,
-          minHeight: 'min(280px, 22vw)',
         }}
         aria-hidden="true"
       >
         <text
           ref={measureRef}
+          direction="rtl"
           x="0"
           y="60"
           fill="white"
@@ -186,7 +185,13 @@ const CurvedLoop = ({
           <path ref={pathRef} id={PATH_ID} d={pathD} fill="none" />
         </defs>
         {ready && (
-          <text fill="white" fontWeight="bold" xmlSpace="preserve" className={className}>
+          <text
+            direction="rtl"
+            fill="white"
+            fontWeight="bold"
+            xmlSpace="preserve"
+            className={className}
+          >
             <textPath ref={textPathRef} href={`#${PATH_ID}`} xlinkHref={`#${PATH_ID}`}>
               {totalText}
             </textPath>
