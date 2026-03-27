@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "framer-motion": "^11.18.2",
+    "gsap": "^3.14.2",
     "lenis": "^1.1.17",
     "ogl": "^1.0.11",
     "react": "^18.3.1",

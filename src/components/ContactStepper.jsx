@@ -5,7 +5,7 @@ async function submitToWeb3Forms({ name, phone, message }) {
   const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
   if (!accessKey) {
     throw new Error(
-      'שליחת מייל לא הוגדרה באתר (חסר מפתח). אפשר ליצור קשר בוואטסאפ.'
+      'Email sending is not configured (missing access key). You can reach out on WhatsApp instead.'
     );
   }
 
@@ -17,7 +17,7 @@ async function submitToWeb3Forms({ name, phone, message }) {
     },
     body: JSON.stringify({
       access_key: accessKey,
-      subject: `פנייה חדשה מהאתר — ${name}`,
+      subject: `New inquiry from the site — ${name}`,
       name,
       phone,
       message,
@@ -26,7 +26,7 @@ async function submitToWeb3Forms({ name, phone, message }) {
 
   const data = await res.json().catch(() => ({}));
   if (!res.ok || !data.success) {
-    throw new Error(data.message || 'השליחה נכשלה. נסה שוב מאוחר יותר.');
+    throw new Error(data.message || 'Something went wrong. Please try again later.');
   }
 }
 
@@ -47,74 +47,74 @@ export default function ContactStepper() {
 
   const handleBeforeNext = (step) => {
     if (step === 1 && !formData.name.trim()) {
-      alert('נא להזין שם מלא');
+      alert('Please enter your full name');
       return false;
     }
     if (step === 2 && !formData.phone.trim()) {
-      alert('נא להזין מספר טלפון');
+      alert('Please enter your phone number');
       return false;
     }
     if (step === 3 && !formData.message.trim()) {
-      alert('נא לכתוב תיאור קצר');
+      alert('Please add a short description');
       return false;
     }
     return true;
   };
 
   return (
-    <div dir="rtl" style={{ textAlign: 'right' }}>
+    <div className="dk-stepper-theme" dir="ltr" style={{ textAlign: 'left' }}>
       <Stepper
         initialStep={1}
         onFinalStepCompleted={handleComplete}
         onBeforeNext={handleBeforeNext}
-        backButtonText="חזור"
-        nextButtonText="המשך"
+        backButtonText="Back"
+        nextButtonText="Continue"
       >
         <Step>
-          <h3 style={{ marginBottom: '1rem' }}>מה שמך?</h3>
+          <h3 style={{ marginBottom: '1rem' }}>What&apos;s your name?</h3>
           <label>
-            שם מלא
+            Full name
             <input
               type="text"
               value={formData.name}
               onChange={(e) => updateField('name', e.target.value)}
-              placeholder="הכנס את שמך"
+              placeholder="Your name"
               required
             />
           </label>
         </Step>
 
         <Step>
-          <h3 style={{ marginBottom: '1rem' }}>איך אפשר ליצור איתך קשר?</h3>
+          <h3 style={{ marginBottom: '1rem' }}>How can I reach you?</h3>
           <label>
-            מספר טלפון
+            Phone number
             <input
               type="tel"
               value={formData.phone}
               onChange={(e) => updateField('phone', e.target.value)}
-              placeholder="050-1234567"
+              placeholder="+1 555 000 0000"
               required
             />
           </label>
         </Step>
 
         <Step>
-          <h3 style={{ marginBottom: '1rem' }}>מה תרצה שנבנה יחד?</h3>
+          <h3 style={{ marginBottom: '1rem' }}>What should we build?</h3>
           <label>
-            תיאור קצר
+            Short brief
             <textarea
               rows={4}
               value={formData.message}
               onChange={(e) => updateField('message', e.target.value)}
-              placeholder="ספר לי על הפרויקט שלך..."
+              placeholder="Tell me about your project, timeline, and goals…"
               required
             />
           </label>
         </Step>
 
         <Step>
-          <h3 style={{ marginBottom: '1rem', color: '#7cff67' }}>תודה! 🚀</h3>
-          <p>אחזור אליך בהקדם.</p>
+          <h3 style={{ marginBottom: '1rem', color: 'var(--accent)' }}>Thank you!</h3>
+          <p>I&apos;ll get back to you as soon as I can.</p>
         </Step>
       </Stepper>
     </div>

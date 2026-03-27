@@ -161,9 +161,8 @@ const CurvedLoop = ({
 
   return (
     <div
-      className={`curved-loop-jacket${ready ? ' curved-loop-jacket--ready' : ''}`}
+      className={`curved-loop-jacket${ready ? ' curved-loop-jacket--ready' : ' curved-loop-jacket--collapsed'}`}
       style={{
-        opacity: ready ? 1 : 0,
         pointerEvents: ready ? 'auto' : 'none',
         cursor: cursorStyle,
       }}
