@@ -1,5 +1,8 @@
 import { SITE } from '../../data/dkPortfolio';
 import ContactStepper from '../ContactStepper';
+import NorrisSocialLinks from '../NorrisSocialLinks/NorrisSocialLinks';
+
+const facebookUrl = import.meta.env.VITE_FACEBOOK_URL || '';
 
 const arrow = (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
@@ -15,6 +18,11 @@ export default function DkContact() {
           <div className="section-label reveal">Get in touch</div>
           <div className="contact-big reveal">{SITE.contactBig}</div>
           <p className="contact-sub reveal">{SITE.contactSub}</p>
+          <NorrisSocialLinks
+            instagramUrl={SITE.socialInstagram}
+            facebookUrl={facebookUrl}
+          />
+
           <div className="contact-links reveal">
             {SITE.contactLinks.map((c) => (
               <a
