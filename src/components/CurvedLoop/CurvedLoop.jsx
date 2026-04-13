@@ -9,9 +9,7 @@ const CurvedLoop = ({
   className,
   curveAmount = 400,
   direction = 'left',
-  interactive = true,
-  /** @type {'ltr' | 'rtl'} */
-  textDirection = 'ltr',
+  interactive = true
 }) => {
   const text = useMemo(() => {
     const hasTrailing = /\s|\u00A0$/.test(marqueeText);
@@ -190,7 +188,7 @@ const CurvedLoop = ({
       >
         <text
           ref={measureRef}
-          direction={textDirection}
+          direction="rtl"
           x="0"
           y="60"
           fill="white"
@@ -205,7 +203,7 @@ const CurvedLoop = ({
         </defs>
         {ready && (
           <text
-            direction={textDirection}
+            direction="rtl"
             fill="white"
             fontWeight="bold"
             xmlSpace="preserve"

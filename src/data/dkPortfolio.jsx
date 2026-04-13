@@ -189,8 +189,6 @@ export const SITE = {
       : []),
     { name: 'WhatsApp', handle: 'Message me', href: 'https://wa.me/972503610061' },
   ],
-  /** Public Instagram — Norris-style links in Contact */
-  socialInstagram: 'https://www.instagram.com/ranelgabsi_/',
   footerLeft: `© ${new Date().getFullYear()} — Web builds & landing pages.`,
   footerRight: 'Built with care — performance, clarity, and shipping on time.',
   curvedLoopText:

@@ -17,7 +17,7 @@ async function submitToWeb3Forms({ name, phone, message }) {
     },
     body: JSON.stringify({
       access_key: accessKey,
-      subject: `PITI — New inquiry from ${name}`,
+      subject: `New inquiry from the site — ${name}`,
       name,
       phone,
       message,
@@ -30,7 +30,7 @@ async function submitToWeb3Forms({ name, phone, message }) {
   }
 }
 
-export default function ContactStepper({ theme = 'dk' }) {
+export default function ContactStepper() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -61,17 +61,14 @@ export default function ContactStepper({ theme = 'dk' }) {
     return true;
   };
 
-  const wrapperClass = theme === 'brutal' ? 'brutal-stepper-theme' : 'dk-stepper-theme';
-
   return (
-    <div className={wrapperClass} dir="ltr" style={{ textAlign: 'left' }}>
+    <div className="dk-stepper-theme" dir="ltr" style={{ textAlign: 'left' }}>
       <Stepper
         initialStep={1}
         onFinalStepCompleted={handleComplete}
         onBeforeNext={handleBeforeNext}
         backButtonText="Back"
         nextButtonText="Continue"
-        submittingText="Sending..."
       >
         <Step>
           <h3 style={{ marginBottom: '1rem' }}>What&apos;s your name?</h3>
@@ -116,7 +113,7 @@ export default function ContactStepper({ theme = 'dk' }) {
         </Step>
 
         <Step>
-          <h3 style={{ marginBottom: '1rem', color: 'var(--accent, #ccff00)' }}>Thank you!</h3>
+          <h3 style={{ marginBottom: '1rem', color: 'var(--accent)' }}>Thank you!</h3>
           <p>I&apos;ll get back to you as soon as I can.</p>
         </Step>
       </Stepper>

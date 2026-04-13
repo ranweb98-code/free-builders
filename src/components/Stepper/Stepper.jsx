@@ -11,9 +11,8 @@ export default function Stepper({
   initialStep = 1,
   onFinalStepCompleted,
   onBeforeNext,
-  backButtonText = 'Back',
-  nextButtonText = 'Continue',
-  submittingText = 'Sending...',
+  backButtonText = 'חזור',
+  nextButtonText = 'המשך',
 }) {
   const steps = Children.toArray(children).filter(Boolean);
   const totalSteps = steps.length;
@@ -44,7 +43,7 @@ export default function Stepper({
           await result;
         }
       } catch (e) {
-        alert(e?.message || 'Something went wrong. Please try again or reach out on WhatsApp.');
+        alert(e?.message || 'אירעה שגיאה בשליחה. נסה שוב או עדכן בוואטסאפ.');
         setIsSubmitting(false);
         return;
       }
@@ -78,7 +77,7 @@ export default function Stepper({
                   className={`step-indicator ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
                   onClick={() => goToStep(stepNum)}
                   aria-current={isActive ? 'step' : undefined}
-                  aria-label={`Step ${stepNum}`}
+                  aria-label={`שלב ${stepNum}`}
                 >
                   <span className="step-indicator-inner">
                     {isCompleted ? (
@@ -127,7 +126,7 @@ export default function Stepper({
                 onClick={() => goNext()}
                 disabled={isSubmitting}
               >
-                {isSubmitting && safeStep === totalSteps - 1 ? submittingText : nextButtonText}
+                {isSubmitting && safeStep === totalSteps - 1 ? 'שולח...' : nextButtonText}
               </button>
             </div>
           ) : (
@@ -141,7 +140,7 @@ export default function Stepper({
                 onClick={() => goNext()}
                 disabled={isSubmitting}
               >
-                {isSubmitting && safeStep === totalSteps - 1 ? submittingText : nextButtonText}
+                {isSubmitting && safeStep === totalSteps - 1 ? 'שולח...' : nextButtonText}
               </button>
             </div>
           )}
