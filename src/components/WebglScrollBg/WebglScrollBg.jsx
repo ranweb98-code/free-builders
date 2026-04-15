@@ -81,8 +81,8 @@ vec3 pal(float t) {
 
 void main() {
   vec2 uv = (gl_FragCoord.xy - uR * .5) / min(uR.x, uR.y);
-  vec3 ro = vec3(0, 0, 2.4);
-  vec3 rd = normalize(vec3(uv, -1.2));
+  vec3 ro = vec3(0, 0, 2.85);
+  vec3 rd = normalize(vec3(uv, -1.06));
 
   float t = 0., hit = 0.;
   for (int i = 0; i < 96; i++) {
@@ -106,7 +106,7 @@ void main() {
     col = mix(bg, col, exp(-t * .15));
   }
 
-  col = mix(uBg, col, clamp(1. - dot(uv * .9, uv * .9), 0., 1.));
+  col = mix(uBg, col, clamp(1. - dot(uv * 1.02, uv * 1.02), 0., 1.));
   col += (fract(sin(dot(gl_FragCoord.xy, vec2(127.1, 311.7))) * 43758.5) - .5) * .022;
 
   gl_FragColor = vec4(col, 1.);
